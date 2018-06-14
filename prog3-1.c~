@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<math.h>
+
+double Heron(double a,double b,double c){
+  double S;
+  double s;
+  
+  s=(a+b+c)/2.0;
+  S=sqrt(s*(s-a)*(s-b)*(s-c));
+  
+  return S;
+}
+
+int main(void){
+  double a,b,c;
+  
+  printf("a = ");scanf("%lf",&a);
+  printf("b = ");scanf("%lf",&b);
+  printf("c = ");scanf("%lf",&c);
+
+  printf("三角形の面積Sは%lfです。\n",Heron(a,b,c));
+  
+  return 0;
+}
