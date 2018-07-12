@@ -37,12 +37,12 @@ double median(int *dat ,int num){ //中央値を求める関数medianをdouble�
   
   bubblesort(dat ,num); //配列datをバブルソートする。
 
-  num_h=(num/2); //中央値があるはずの配列の要素数num_hを数値の個数numを2で割る。また、配列の要素数の基準に合わせるために、-1をして0からの値とする。
+  num_h=(num/2); //中央値の要素数num_hを求める。num_hはint型であるため、小数点以下は切り捨てられ、ちょうど数値の個数が奇数の時の中央値の要素数となる。
   
   if(num%2 != 0) //データの個数が奇数だった場合、配列の中央値がある要素数num_hのときの値dat[num_h]を変数medに代入する。
     med=dat[num_h];
-  else //データの個数が偶数だった場合、中央値は真ん中の2つの値の平均となる。int型であるnum_hは小数点以下は切り捨てなので、真ん中の2つの値はdat[num_h]とdat[num_h+1]となる。これらの平均を変数medに代入する。
-    med=(dat[num_h]+dat[num_h+1])/2.0;
+  else //データの個数が偶数だった場合、中央値は真ん中の2つの値の平均とする。中央値の要素数num_hは真ん中２つの値の大きい方となるため、配列の値dat[num_h]とdat[num_h-1]の平均となる。
+    med=(dat[num_h]+dat[num_h-1])/2.0;
 
   return med;
 }
