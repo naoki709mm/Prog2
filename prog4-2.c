@@ -104,7 +104,7 @@ int main(void){
   int tmp[3][3]={};
   int drw;
   char num='1';
-  char grd[8][16];
+  char grd[8][16]={};
   
   grid(grd);
   
