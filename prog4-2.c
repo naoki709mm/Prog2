@@ -107,7 +107,7 @@ int main(void){
     p=(p+1)%2;
     printf("Player %d, enter row and column:",p+1);
     scanf("%d %d",&x,&y);
-    
+
     while(x<1 || x>3 || y<1 || y>3 || tmp[x-1][y-1] == 1){
       printf("Player %d, enter row and column:",p+1);
       scanf("%d %d",&x,&y);

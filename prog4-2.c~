@@ -1,0 +1,78 @@
+#include<stdio.h>
+
+void grid(char grd[8][16]){
+  int i,j;
+  char num='1';
+  
+  for(i=1 ;i<7 ;i++){
+    if(i%2 == 0){
+      for(j=0 ;j<15 ;j++){
+	if(j<2)
+	  grd[i][j]=' ';
+	else
+	  grd[i][j]='-';
+      }
+    }
+    else{
+      grd[i][0]=num;
+      grd[i][1]=' ';
+      for(j=2 ;j<15 ;j++){
+	if((j-2)%4 == 0)
+	  grd[i][j]='|';
+	else
+	  grd[i][j]=' ';
+      }
+      num++;
+    }
+  }
+}
+
+void plot_grid(char grd[8][16] ,int x ,int y ,int p){
+  char mrk;
+  
+  mrk='X'-p*9;
+  
+  grd[(x*2)-1][y*4]=mrk;
+}
+
+int win_rose(char grd[8][16] ,int p){
+  int i,j;
+  int sum_x=0,sum_y=0;
+  char mrk;
+  
+  mrk='X'-p*9;
+
+  for(i=1 ;i<=3 ;i++){
+    for(j=1 ;j<=3 ;j++;){
+      if(grd[(i*2)-1][j*4] == mrk)
+	sum_y++;
+      if(grd[(j*2)-1][i*4] == mrk)
+	sum_x++;
+      if(sum_y == 3 || sum_x == 3)
+	return 1;
+    }
+    sum_x=0;
+    sum_y=0;
+  }
+
+  
+int main(void){
+  int i;
+  int p=1;
+  int x,y;
+  char num='1';
+  char grd[8][16]={{"    1   2   3"}};
+  
+  
+  printf("Player %d, enter row and column:",p+1);
+  scanf("%d %d",&x,&y);
+  
+  grid(grd);
+
+  plot_grid(grd,x,y,p);
+  
+  for(i=0 ;i<7 ;i++)
+    printf("%s\n",grd[i]);
+
+  return 0;
+}
