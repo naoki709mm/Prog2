@@ -1,3 +1,8 @@
+/*** 氏名(Name) Naoki Okuya
+ *** 課題 4 問題 2 : This program is Tic-tac-toe.
+ *** 提出日: 7月18日
+ ***/
+
 #include<stdio.h>
 #include <string.h>
 
