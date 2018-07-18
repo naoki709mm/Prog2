@@ -7,8 +7,8 @@ void grid(char grd[8][16]){
   
   strcpy(grd[0],"    1   2   3");
   
-  for(i=1 ;i<7 ;i++){
-    if(i%2 == 0){
+  for(i=1 ;i<=7 ;i++){
+    if(i%2 == 1){
       for(j=0 ;j<15 ;j++){
 	if(j<2)
 	  grd[i][j]=' ';
@@ -35,7 +35,7 @@ void plot_grid(char grd[8][16] ,int x ,int y ,int p){
   
   mrk='X'-p*9;
   
-  grd[(x*2)-1][y*4]=mrk;
+  grd[x*2][y*4]=mrk;
 }
 
 int win_rose(char grd[8][16] ,int p){
@@ -48,25 +48,25 @@ int win_rose(char grd[8][16] ,int p){
   
   for(i=1 ;i<=3 ;i++){
     for(j=1 ;j<=3 ;j++){
-      if(grd[(i*2)-1][j*4] == mrk){
+      if(grd[i*2][j*4] == mrk){
 	sum_y++;
 	if(sum_y == 3)
 	  return 1;
       }
-      if(grd[(j*2)-1][i*4] == mrk){
+      if(grd[j*2][i*4] == mrk){
 	sum_x++;
 	if(sum_x == 3)
 	  return 1;
       }
       if(i-j == 0){
-	if(grd[(i*2)-1][j*4] == mrk){
+	if(grd[i*2][j*4] == mrk){
 	  sum_yx++;
 	  if(sum_yx == 3)
 	    return 1;
 	}
       }
       if((i+j) == 4){
-	if(grd[(i*2)-1][j*4] == mrk){
+	if(grd[i*2][j*4] == mrk){
 	  sum_xy++;
 	  if(sum_xy == 3)
 	    return 1;
@@ -107,7 +107,7 @@ int main(void){
     p=(p+1)%2;
     printf("Player %d, enter row and column:",p+1);
     scanf("%d %d",&x,&y);
-
+    
     while(x<1 || x>3 || y<1 || y>3 || tmp[x-1][y-1] == 1){
       printf("Player %d, enter row and column:",p+1);
       scanf("%d %d",&x,&y);
@@ -116,7 +116,7 @@ int main(void){
     
     plot_grid(grd,x,y,p);
     
-    for(i=0 ;i<7 ;i++)
+    for(i=0 ;i<=7 ;i++)
       printf("%s\n",grd[i]);
     printf("\n");
     
